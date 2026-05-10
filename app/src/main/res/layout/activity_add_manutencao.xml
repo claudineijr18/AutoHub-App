@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#0D0D0D">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nova Manutenção"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Nome -->
+    <EditText
+        android:id="@+id/etNomeMan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome da manutenção"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#BDBDBD"
+        android:backgroundTint="#FFFFFF"/>
+
+    <!-- Data -->
+    <EditText
+        android:id="@+id/etData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data (dd/mm/aaaa)"
+        android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#BDBDBD"
+        android:backgroundTint="#FFFFFF"/>
+
+    <!-- Custo -->
+    <EditText
+        android:id="@+id/etCustoMan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Custo"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#BDBDBD"
+        android:backgroundTint="#FFFFFF"/>
+
+    <!-- Quilometragem -->
+    <EditText
+        android:id="@+id/etKm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quilometragem"
+        android:inputType="number"
+        android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#BDBDBD"
+        android:backgroundTint="#FFFFFF"/>
+
+    <!-- Botão -->
+    <Button
+        android:id="@+id/btnSalvarMan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

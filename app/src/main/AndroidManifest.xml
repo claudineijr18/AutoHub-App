@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AUTOHUB">
         <activity
+            android:name=".AddManutencaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddModificacaoActivity"
             android:exported="false" />
         <activity
