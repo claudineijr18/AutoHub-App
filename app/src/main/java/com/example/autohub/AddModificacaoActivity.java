@@ -95,32 +95,53 @@ public class AddModificacaoActivity extends AppCompatActivity {
                     etCusto.getText().toString().trim();
 
             // Validação
-            if (nome.isEmpty()
-                    || custoTexto.isEmpty()
-                    || spStatus.getSelectedItemPosition() == 0) {
-
-                Toast.makeText(
-                        this,
-                        "Preencha todos os campos!",
-                        Toast.LENGTH_SHORT
-                ).show();
-
+            if (nome.isEmpty()){
+                etNomeMod.setError("Informe o nome da modificação");
+                etNomeMod.requestFocus();
                 return;
             }
 
-            double custo =
-                    Double.parseDouble(custoTexto);
+            if(nome.length() < 3){
+                etNomeMod.setError("O nome deve ter pelo menos 3 caracteres");
+                etNomeMod.requestFocus();
+                return;
+            }
+
+            if(spStatus.getSelectedItemPosition() == 0){
+                Toast.makeText(this, "Selecione um status", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if(custoTexto.isEmpty()){
+                etCusto.setError("Informe o custo");
+                etCusto.requestFocus();
+                return;
+            }
+
+            double custo;
+
+            try{
+                custo = Double.parseDouble(custoTexto);
+            }catch(NumberFormatException e){
+                etCusto.setError("Informe um valor válido");
+                etCusto.requestFocus();
+                return;
+            }
+
+            if(custo <= 0){
+                etCusto.setError("O custo deve ser maior que zero");
+                etCusto.requestFocus();
+                return;
+            }
 
             // UPDATE
             if (idModificacao != -1) {
-
                 db.atualizarModificacao(
                         idModificacao,
                         nome,
                         statusSelecionado,
                         custo
                 );
-
                 Toast.makeText(
                         this,
                         "Modificação atualizada!",
