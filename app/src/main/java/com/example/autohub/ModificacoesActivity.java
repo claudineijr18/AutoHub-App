@@ -52,7 +52,7 @@ public class ModificacoesActivity extends AppCompatActivity {
         // Adapter
         adapter = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_list_item_1,
+                R.layout.item_lista,
                 listaModificacoes
         );
 
