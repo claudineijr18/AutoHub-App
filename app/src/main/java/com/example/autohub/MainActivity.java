@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         String[] volvo = {"Selecione o modelo", "C30", "C70", "S40", "S60", "S80", "V40", "V60", "V90"};
 
         //Utilizando o adapter em marcas
-        ArrayAdapter<String> adapterMarca = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, marcas);
+        ArrayAdapter<String> adapterMarca = new ArrayAdapter<>(this, R.layout.item_lista, marcas);
+        adapterMarca.setDropDownViewResource(R.layout.item_spinner_dropdown);
         spMarca.setAdapter(adapterMarca);
 
         //Spinner de forma dependente
@@ -139,11 +140,11 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayAdapter<String> adapterModelo = new ArrayAdapter<>(
                         MainActivity.this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.item_lista,
                         modelos
                 );
 
-                adapterModelo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adapterModelo.setDropDownViewResource(R.layout.item_spinner_dropdown);
                 spModelo.setAdapter(adapterModelo);
 
                 marcaSelecionada = marcas[position];
