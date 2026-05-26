@@ -163,4 +163,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
     }
 
+    //=======================
+    //CALCULO DE GASTOS
+    //=======================
+
+    public double calcularTotalModificacoes(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        double total = 0;
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + MOD_CUSTO + ") FROM " + TABLE_MODIFICACOES + " WHERE " + MOD_STATUS + " = ?", new String[]{"Concluído"}  );
+        if (cursor.moveToFirst()) {
+            total = cursor.getDouble(0);
+        }
+        cursor.close();
+        return total;
+    }
+
+    public double calcularTotalManutencoes(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        double total = 0;
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + MAN_CUSTO + ") FROM " + TABLE_MANUTENCOES, null);
+        if (cursor.moveToFirst()) {
+            total = cursor.getDouble(0);
+        }
+        cursor.close();
+        return total;
+    }
+
 }

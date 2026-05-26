@@ -14,8 +14,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class HomeActivity extends AppCompatActivity {
-    TextView tvTitulo, tvBoasVindas, tvPergunta;
+    TextView tvTitulo, tvBoasVindas, tvPergunta, tvTotalModificacoes, tvTotalManutencoes, tvTotalGeral;
     Button btnModificacoes, btnManutencoes;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +26,14 @@ public class HomeActivity extends AppCompatActivity {
 
         tvBoasVindas = findViewById(R.id.tvBoasVindas);
         tvPergunta = findViewById(R.id.tvPergunta);
+        tvTotalModificacoes = findViewById(R.id.tvTotalModificacoes);
+        tvTotalManutencoes = findViewById(R.id.tvTotalManutencoes);
+        tvTotalGeral = findViewById(R.id.tvTotalGeral);
 
         btnModificacoes = findViewById(R.id.btnModificacoes);
         btnManutencoes = findViewById(R.id.btnManutencoes);
+
+        db = new DatabaseHelper(this);
 
         //Recuperar os dados salvos
         SharedPreferences prefs = getSharedPreferences("AutoHubPrefs", MODE_PRIVATE);
@@ -44,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
             tvPergunta.setText("O que deseja fazer com o seu " + marca + " " + modelo + "?");
         }
 
+        atualizarTotais();
+
         //navegação
         btnModificacoes.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ModificacoesActivity.class);
@@ -55,6 +63,23 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(db != null){
+            atualizarTotais();
+        }
+    }
+
+    private void atualizarTotais() {
+        double totalModificacoes = db.calcularTotalModificacoes();
+        double totalManutencoes = db.calcularTotalManutencoes();
+        double totalGeral = totalModificacoes + totalManutencoes;
+
+        tvTotalModificacoes.setText("Total de modificações: R$ " + String.format("%.2f", totalModificacoes));
+        tvTotalManutencoes.setText("Total de manutenções: R$ " + String.format("%.2f", totalManutencoes));
+        tvTotalGeral.setText("Total investido: R$ " + String.format("%.2f", totalGeral));
     }
 }

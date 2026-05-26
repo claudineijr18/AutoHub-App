@@ -43,12 +43,12 @@ public class AddModificacaoActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.item_lista,
                 status
         );
 
         adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item
+                R.layout.item_spinner_dropdown
         );
 
         spStatus.setAdapter(adapter);

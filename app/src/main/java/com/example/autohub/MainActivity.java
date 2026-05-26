@@ -183,10 +183,26 @@ public class MainActivity extends AppCompatActivity {
             String marca = spMarca.getSelectedItem().toString().trim();
             String modelo = spModelo.getSelectedItem().toString().trim();
 
-            if(nome.isEmpty() || spMarca.getSelectedItemPosition() == 0 || spModelo.getSelectedItemPosition() == 0){
-                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+            if(nome.isEmpty()){
+                etNome.setError("Informe o seu nome");
+                etNome.requestFocus();
                 return;
+            }
 
+            if(nome.length()<3){
+                etNome.setError("O nome deve ter no mínimo 3 caracteres");
+                etNome.requestFocus();
+                return;
+            }
+
+            if(spMarca.getSelectedItemPosition() == 0){
+                Toast.makeText(this, "Selecione a marca", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if(spModelo.getSelectedItemPosition() == 0){
+                Toast.makeText(this, "Selecione o modelo", Toast.LENGTH_SHORT).show();
+                return;
             }
 
             SharedPreferences.Editor editor = prefs.edit();
