@@ -13,55 +13,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nova Manutenção"
-        android:textSize="24sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="28dp"/>
 
     <!-- Nome -->
     <EditText
         android:id="@+id/etNomeMan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/campo_padrao"
         android:hint="Nome da manutenção"
         android:textColor="#FFFFFF"
         android:textColorHint="#BDBDBD"
-        android:backgroundTint="#FFFFFF"/>
+        android:backgroundTint="@null"
+        android:padding="14dp"/>
 
     <!-- Data -->
     <EditText
         android:id="@+id/etData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/campo_padrao"
         android:hint="Data (dd/mm/aaaa)"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="18dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#BDBDBD"
-        android:backgroundTint="#FFFFFF"/>
+        android:backgroundTint="@null"
+        android:padding="14dp"/>
 
     <!-- Custo -->
     <EditText
         android:id="@+id/etCustoMan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/campo_padrao"
         android:hint="Custo"
         android:inputType="numberDecimal"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="18dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#BDBDBD"
-        android:backgroundTint="#FFFFFF"/>
+        android:backgroundTint="@null"
+        android:padding="14dp"/>
 
     <!-- Quilometragem -->
     <EditText
         android:id="@+id/etKm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/campo_padrao"
         android:hint="Quilometragem"
         android:inputType="number"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="18dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#BDBDBD"
-        android:backgroundTint="#FFFFFF"/>
+        android:backgroundTint="@null"
+        android:padding="14dp"/>
 
     <!-- Botão -->
     <Button
@@ -69,6 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

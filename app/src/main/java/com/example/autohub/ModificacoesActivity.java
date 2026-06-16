@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class ModificacoesActivity extends AppCompatActivity {
 
     ListView listView;
@@ -146,6 +149,10 @@ public class ModificacoesActivity extends AppCompatActivity {
 
         Cursor cursor = db.listarModificacoes();
 
+        Locale brasil = new Locale("pt", "BR");
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(brasil);
+
+
         if (cursor.moveToFirst()) {
 
             do {
@@ -160,10 +167,10 @@ public class ModificacoesActivity extends AppCompatActivity {
 
                 String item =
                         nome +
-                                " - " +
+                                "\n⚙️ Status: " +
                                 status +
-                                " - R$ " +
-                                custo;
+                                "\n💰 " +
+                                formatoMoeda.format(custo);
 
                 // Lista visual
                 listaModificacoes.add(item);

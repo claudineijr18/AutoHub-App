@@ -84,6 +84,31 @@ public class AddManutencaoActivity extends AppCompatActivity {
                 return;
             }
 
+            // VALIDAR DIA, MÊS E ANO
+            String[] partes = data.split("/");
+
+            int dia = Integer.parseInt(partes[0]);
+            int mes = Integer.parseInt(partes[1]);
+            int ano = Integer.parseInt(partes[2]);
+
+            if (dia < 1 || dia > 31) {
+                etData.setError("Dia inválido");
+                etData.requestFocus();
+                return;
+            }
+
+            if (mes < 1 || mes > 12) {
+                etData.setError("Mês inválido");
+                etData.requestFocus();
+                return;
+            }
+
+            if (ano < 2000 || ano > 2100) {
+                etData.setError("Ano inválido");
+                etData.requestFocus();
+                return;
+            }
+
             if (custoTexto.isEmpty()) {
                 etCusto.setError("Informe o custo");
                 etCusto.requestFocus();

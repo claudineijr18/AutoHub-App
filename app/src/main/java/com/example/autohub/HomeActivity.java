@@ -13,6 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity {
     TextView tvTitulo, tvBoasVindas, tvPergunta, tvTotalModificacoes, tvTotalManutencoes, tvTotalGeral;
     Button btnModificacoes, btnManutencoes;
@@ -78,8 +81,12 @@ public class HomeActivity extends AppCompatActivity {
         double totalManutencoes = db.calcularTotalManutencoes();
         double totalGeral = totalModificacoes + totalManutencoes;
 
-        tvTotalModificacoes.setText("Total de modificações: R$ " + String.format("%.2f", totalModificacoes));
-        tvTotalManutencoes.setText("Total de manutenções: R$ " + String.format("%.2f", totalManutencoes));
-        tvTotalGeral.setText("Total investido: R$ " + String.format("%.2f", totalGeral));
+        //formatação monetaria brasileira
+        Locale brasil = new Locale("pt", "BR");
+
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(brasil);
+        tvTotalModificacoes.setText("Total de modificações: " + formatoMoeda.format(totalModificacoes));
+        tvTotalManutencoes.setText("Total de manutenções: " + formatoMoeda.format(totalManutencoes));
+        tvTotalGeral.setText("Total investido: " + formatoMoeda.format(totalGeral));
     }
 }
